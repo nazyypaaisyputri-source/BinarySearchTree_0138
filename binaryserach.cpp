@@ -1,3 +1,5 @@
+//BinarySearchTree_0140
+// 15 Comit
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,14 +22,15 @@ public:
 
 class BinaryTree
 {
-    public:
+public: 
     Node *ROOT;
 
     BinaryTree()
     {
-        ROOT = NULL;
+        ROOT = NULL; // Initializing ROOT to nul
     }
 
+    // Insert a node in the binary search tree
     void insert(string element)
     {
         Node *newNode = new Node(element, NULL, NULL);
@@ -38,6 +41,7 @@ class BinaryTree
 
         Node *parent = NULL;
         Node *currentNode = NULL;
+
         search(element, parent, currentNode);
 
         if (parent == NULL)
@@ -56,6 +60,8 @@ class BinaryTree
         }
     }
 
+    //this function searches the current node of the specified node
+    //as well as the current node of its parrent
     void search(string element, Node *&parent, Node *&currentNode)
     {
         currentNode = ROOT;
@@ -93,13 +99,31 @@ class BinaryTree
     {
         if (ROOT == NULL)
         {
-            cout <<"Tree is empty" << endl;
+            cout <<"Tree is empty" <<  endl;
             return;
         }
 
         if (ptr != NULL)
         {
-            postprder(ptr->leftchild);
+            cout << ptr->info << " ";
+            preorder(ptr->leftchild);
+            preorder(ptr->rightchild);
+        }
+    }
+
+    void postorder(Node *ptr)
+    {
+        // perfoms the postorder traveersal of the tree
+
+        if (ROOT == NULL)
+        {
+            cout << "Tree is empty" << endl;
+            return;
+        }
+
+        if (ptr != NULL)
+        {
+            postorder(ptr->leftchild);
             postorder(ptr->rightchild);
             cout << ptr->info << " ";
         }
@@ -164,3 +188,5 @@ int main()
         }
         }
     }
+    return 0;
+}
